@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-prediction-api"
+version = "0.1.0"
+description = "FastAPI image classification service with a trained Keras model"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "ml-prediction-api contributors"}]
+license = {text = "MIT"}
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "tensorflow",
+  "numpy",
+  "pillow",
+  "python-multipart",
+  "pydantic-settings",
+  "pytest",
+  "httpx"
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "ruff"
+]
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
